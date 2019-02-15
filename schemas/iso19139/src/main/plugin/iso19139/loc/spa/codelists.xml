@@ -633,13 +633,13 @@
   <codelist name="gmd:MD_ClassificationCode">
     <entry>
       <code>unclassified</code>
-      <label>Unclassified</label>
+      <label>Sin clasificar</label>
       <description>Disponible para divulgación general</description>
     </entry>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
     <entry>
       <code>restricted</code>
-      <label>Restricted</label>
+      <label>Restringido</label>
       <description>No apto para divulgación general</description>
     </entry>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -1406,7 +1406,7 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
     <entry>
       <code>restricted</code>
-      <label>Restricted</label>
+      <label>Restringido</label>
       <description>Llimitado de la circulación o acceso general</description>
     </entry>
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
