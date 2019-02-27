@@ -39,6 +39,7 @@ public class FilesystemStoreResource implements MetadataResource {
     private final String url;
     private final MetadataResourceVisibility metadataResourceVisibility;
     private double size = -1;
+    private final String finalUrl;
 
     public FilesystemStoreResource(String id,
                                    String baseUrl,
@@ -48,6 +49,19 @@ public class FilesystemStoreResource implements MetadataResource {
         this.url = baseUrl + id;
         this.metadataResourceVisibility = metadataResourceVisibility;
         this.size = Double.isNaN(size) ? -1 : size;
+        this.finalUrl = this.url;
+    }
+
+    public FilesystemStoreResource(String id,
+                                   String baseUrl,
+                                   MetadataResourceVisibility metadataResourceVisibility,
+                                   double size,
+                                   String finalUrl) {
+        this.filename = id;
+        this.url = baseUrl + id;
+        this.metadataResourceVisibility = metadataResourceVisibility;
+        this.size = Double.isNaN(size) ? -1 : size;
+        this.finalUrl = finalUrl;
     }
 
     @Override
@@ -70,6 +84,10 @@ public class FilesystemStoreResource implements MetadataResource {
         return size;
     }
 
+    public String getFinalUrl() {
+        return finalUrl;
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(this.getClass().getSimpleName());
@@ -78,6 +96,7 @@ public class FilesystemStoreResource implements MetadataResource {
         sb.append("URL: ").append(url).append("\n");
         sb.append("Type: ").append(metadataResourceVisibility).append("\n");
         sb.append("Size: ").append(size).append("\n");
+        sb.append("finalUrl: ").append(finalUrl).append("\n");
         return sb.toString();
     }
 }

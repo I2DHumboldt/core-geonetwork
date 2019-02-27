@@ -127,7 +127,8 @@ public class FilesystemStore implements Store {
                     metadataUuid + "/attachments/" + path.getFileName(),
                     settingManager.getNodeURL() + "api/records/",
                     visibility,
-                    Files.size(path));
+                    Files.size(path),
+                    settingManager.getSiteURL(context) + "file.disclaimer?uuid=" + metadataUuid + "&fname=" + path.getFileName() + "&access=" + visibility);
                 resourceList.add(resource);
             }
         } catch (IOException ignored) {

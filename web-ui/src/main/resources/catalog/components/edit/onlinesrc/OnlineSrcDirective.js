@@ -1238,7 +1238,7 @@
                     scope.params.url = '';
                     setParameterValue(scope.params.name, '');
                     $timeout(function() {
-                      scope.params.url = scope.resource.url;
+                      scope.params.url = scope.resource.finalUrl;
                       setParameterValue(scope.params.name,
                           scope.resource.id.split('/').splice(2).join('/'));
                     }, 100);
