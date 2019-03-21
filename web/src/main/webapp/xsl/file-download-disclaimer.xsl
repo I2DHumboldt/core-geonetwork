@@ -13,12 +13,13 @@
     page content
     -->
   <xsl:template name="content">
-
+    <script type="text/javascript" src="{/root/gui/url}/scripts/disclaimer.js"></script>
     <xsl:call-template name="formLayout">
       <xsl:with-param name="title" select="/root/gui/strings/download"/>
       <xsl:with-param name="content">
         <form id="feedbackf" name="feedbackf" accept-charset="UTF-8" method="post">
           <input type="hidden" name="id" value="{/root/response/id}"/>
+          <input type="hidden" name="uuid" value="{/root/response/uuid}"/>
           <xsl:for-each select="/root/response/fname">
             <input type="hidden" name="fname" value="{.}"/>
           </xsl:for-each>
@@ -98,6 +99,8 @@
             </b>
           </div>
           <br/>
+          <div id="formError" align="center" style="color: red"></div>
+          <a id="file" style="display: none"></a>
         </form>
       </xsl:with-param>
       <xsl:with-param name="buttons">

@@ -26,7 +26,10 @@ package org.fao.geonet.services.feedback;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
+import org.apache.commons.validator.routines.EmailValidator;
 
+import org.fao.geonet.ApplicationContextHolder;
+import org.fao.geonet.exceptions.BadParameterEx;
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.Util;
 import org.fao.geonet.constants.Geonet;
@@ -49,6 +52,7 @@ import jeeves.server.context.ServiceContext;
  */
 
 public class Insert implements Service {
+
     // --------------------------------------------------------------------------
     // ---
     // --- Init
@@ -72,7 +76,13 @@ public class Insert implements Service {
 
         String name = Util.getParam(params, Params.NAME);
         String org = Util.getParam(params, Params.ORG);
+
         String email = Util.getParam(params, Params.EMAIL);
+        EmailValidator validator = EmailValidator.getInstance();
+        if (!validator.isValid(email)) {
+            throw new BadParameterEx(Params.EMAIL, email);
+        }
+
         String gender = Util.getParam(params, "gender", "-");
         String phone = Util.getParam(params, "phone", null);
 
@@ -124,7 +134,10 @@ public class Insert implements Service {
 
         MailUtil.sendMail(toAddress, subject, message.toString(), sm);
 
-        return new Element("response").addContent(params.cloneContent());
+        return new Element("response")
+            .addContent(new Element("url").setText(sm.getSiteURL(context) + "resources.get.archive"))
+            .addContent(new Element("param").setText("uuid=" + uuid))
+            .addContent(new Element("param").setText("fname=" + Util.getParam(params, "fname")));
     }
 }
 
