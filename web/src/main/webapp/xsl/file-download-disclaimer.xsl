@@ -14,6 +14,7 @@
     -->
   <xsl:template name="content">
     <script type="text/javascript" src="{/root/gui/url}/scripts/disclaimer.js"></script>
+    <link rel="stylesheet" type="text/css" href="{/root/gui/url}/geonetwork.css"/>
     <xsl:call-template name="formLayout">
       <xsl:with-param name="title" select="/root/gui/strings/download"/>
       <xsl:with-param name="content">
