@@ -11,6 +11,7 @@ var feedbackSubmit = function() {
         const errorMsg = JSON.parse(response).error.message;
         document.getElementById("formError").innerHTML = `Error: ${errorMsg}`;
       } catch (e) {
+        document.getElementById("formError").innerHTML = '';
         const hostRegex = /(?:<url>).+(?:<\/url>)/;
         const paramsRegex = /(?:<param>)(.+)(?:<\/param>)/g;
         const fileUrl = response.match(hostRegex)[0].replace('<url>','').replace('</url>','');
