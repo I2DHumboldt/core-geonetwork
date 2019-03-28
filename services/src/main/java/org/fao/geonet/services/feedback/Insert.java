@@ -135,9 +135,7 @@ public class Insert implements Service {
         MailUtil.sendMail(toAddress, subject, message.toString(), sm);
 
         return new Element("response")
-            .addContent(new Element("url").setText(sm.getSiteURL(context) + "resources.get.archive"))
-            .addContent(new Element("param").setText("uuid=" + uuid))
-            .addContent(new Element("param").setText("fname=" + Util.getParam(params, "fname")));
+            .addContent(new Element("url").setText(sm.getNodeURL() + "api/records/" + uuid + "/attachments/" + Util.getParam(params, "fname")));
     }
 }
 

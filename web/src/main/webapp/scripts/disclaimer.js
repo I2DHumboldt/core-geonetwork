@@ -13,10 +13,8 @@ var feedbackSubmit = function() {
       } catch (e) {
         document.getElementById("formError").innerHTML = '';
         const hostRegex = /(?:<url>).+(?:<\/url>)/;
-        const paramsRegex = /(?:<param>)(.+)(?:<\/param>)/g;
         const fileUrl = response.match(hostRegex)[0].replace('<url>','').replace('</url>','');
-        const paramsUrl = response.match(paramsRegex).map(e => e.replace('<param>','').replace('</param>',''))
-        document.getElementById("file").setAttribute("href", `${fileUrl}?${paramsUrl.join('&')}`);
+        document.getElementById("file").setAttribute("href", `${fileUrl}`);
         document.getElementById("file").click();
       }
     })
