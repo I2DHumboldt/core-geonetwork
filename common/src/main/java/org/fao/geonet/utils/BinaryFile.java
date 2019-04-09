@@ -319,7 +319,7 @@ public final class BinaryFile {
     //---------------------------------------------------------------------------
 
     private void doEncode(int responseCode, Path path, boolean remove) {
-        checkForRemoteFile(path);
+        // checkForRemoteFile(path);
 
         element.setAttribute("responseCode", responseCode + "");
         element.setAttribute("path", path.toString());
